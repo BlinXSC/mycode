@@ -16,12 +16,26 @@ trivia= {
             ]
         }
 
-html.unescape(trivia)
-
-print(trivia)
-
+# Slices Questions
 question = trivia["question"]
 correct_answer = trivia["correct_answer"]
 incorrent1 = trivia["incorrect_answers"][0]
 incorrent2 = trivia["incorrect_answers"][1]
 incorrent3 = trivia["incorrect_answers"][2]
+
+# Checks for correct answer
+print(question)
+print(f"A. {html.unescape(correct_answer)}")
+print(f"B. {html.unescape(incorrent1)}")
+print(f"C. {html.unescape(incorrent2)}")
+print(f"D. {html.unescape(incorrent3)}")
+
+# Prompts user for correct answer
+answer = input("\nAnswer >>> ")
+answer = answer.upper()
+
+# Conditional statement checking for correct answer
+if answer == "A":
+    print("\nCorrect!!!")
+else:
+    print("\nWrong...")

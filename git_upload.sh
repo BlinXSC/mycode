@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Please provide a comment for this upload GitHub"
+echo "Please provide a comment for this upload to GitHub"
 read comment
 
 git add *

@@ -2,7 +2,7 @@
 
 # Prompts the user to provide a character they want to know more about.
 char_name = input("Which character do you want to know more about? (Starlord, Mystique, Hulk) >>> ")
-char_stat = input("What statistic do you want to know more about? (real name, powers, archenemy >>> ")
+char_stat = input("What statistic do you want to know more about? (real name, powers, archenemy) >>> ")
 
 marvelchars= {
 "Starlord":

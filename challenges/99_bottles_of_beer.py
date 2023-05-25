@@ -25,5 +25,4 @@ def main():
         print("Take one down, pass it around")
         print(f"{x - 1} bottles of beer on the wall")
 
-
 main()

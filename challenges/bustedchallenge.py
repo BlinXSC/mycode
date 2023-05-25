@@ -12,7 +12,7 @@ def main():
 
         if (name and num in words.keys()):
             # Hi <name>! Welcome to Day 2 of Python Training!
-            print("Hi " + name.capitalize() + "! Have a " + words[f"{num}"] + " day!")
+            print("Hi " + name.capitalize() + "! Have a " + words[num] + " day!")
             break
         else:
             print("Come on, follow directions. Try again.")

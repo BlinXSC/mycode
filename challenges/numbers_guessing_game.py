@@ -24,6 +24,7 @@ def main():
             print("Please provide an integer between 1 and 100.")
             guess = input("Guess a number between 1 and 100\n> ")
 
+        # Converts string to integer
         guess = int(guess)
 
         # Checks if the number is high, low, or correct

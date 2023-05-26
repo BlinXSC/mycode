@@ -12,7 +12,7 @@ with open("/home/student/mycode/attemptlogin/keystone.common.wsgi") as kfile:
         # if this 'fail pattern' appears in the line...
         if "- - - - -] Authorization failed" in line:
             loginfail += 1 # this is the same as loginfail = loginfail + 1
-            print(line.split(sep = " ",)[-1])
+            print("IP Address of failed login:", line.split(sep = " ")[-1])
 
         # if this 'success pattern appears' in the line...
         if "-] Authorization failed" in line:

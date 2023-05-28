@@ -6,8 +6,9 @@ import csv
 
 # Manually create an rc file
 def manual_rc():
-    
-    with open("admin.rc", "a") as outFile: 
+    """Manually create an rc file"""
+
+    with open("admin.rc", "a") as outFile:
         osAUTH = input("What is the OS_AUTH_URL? ")
         print("export OS_AUTH_URL=" + osAUTH, file=outFile)
 
@@ -30,14 +31,14 @@ def manual_rc():
 
 # Create rc using an importfile
 def auto_rc():
+    """Auto-create an rc file"""
 
-    user_list = input("Please provide the name of the file you wish to use to create the rc file >>> ")
+    user_list = input("Please provide the file name you wish to use to create the rc file >>> ")
 
     with open(user_list, "r") as csvfile:
 
         # loop across our open file line by line
         for row in csv.reader(csvfile):
-            
             # creates file with the user's name to identify it
             filename = f"{row[3]}.rc"
 
@@ -60,6 +61,7 @@ def auto_rc():
 
 # runs program, prompts user if they want to create a single rc manually or multiple automatically
 def main():
+    """Main program"""
 
     choice = -1
 
@@ -67,9 +69,9 @@ def main():
     print("1. Manually")
     print("2. Automatically with an input file")
 
-    while (choice != 0):
+    while choice != 0:
         try:
-            choice = int(input("Please select between 1 (Manual) or 2 (Automatic), or type \"0\" to exit >>> "))
+            choice = int(input("Please select 1 or 2 , or type \"0\" to exit >>> "))
         except:
             print("Wrong input, please try again.")
 

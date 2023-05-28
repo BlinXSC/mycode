@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-# Rock Paper Scissors game :)
+"""
+Rock Paper Scissors game :)
+"""
 
 import random
 
 def main():
+    """ The main program"""
 
     # Briefs the player on the rock paper scissors game.
     print("Welcome to a game of rock paper scissors. The computer will make a choice,")
@@ -22,7 +25,7 @@ def main():
 
         # Computer's choice
         computer_choice = random.choice(options)
-        print(computer_choice) #For debug purposes, keep this line inactive
+        # print(computer_choice) #For debug purposes, keep this line inactive
 
         # User picks
         user_choice = input('Enter your choice (rock, paper, scissors) >>> ').lower()
@@ -52,4 +55,5 @@ def main():
     else:
         print("Better luck next time...")
 
-main()
+# Calls the main function
+main() # \r\n EOF

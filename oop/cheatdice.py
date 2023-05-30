@@ -56,3 +56,8 @@ class Weighted_Dice(Player):
 class Saboteur(Player):
     def cheat(self, other_player):
         other_player.dice = [randint(1,3) for i in range(3)]
+
+# ensures all 6s are rolled
+class Drop_the_Hammah(Player):
+    def cheat(self):
+        self.dice = [6,6,6]

@@ -11,13 +11,14 @@ from cheatdice import Mulligan
 from cheatdice import Additional_Die
 from cheatdice import Weighted_Dice
 from cheatdice import Saboteur
+from cheatdice import Drop_the_Hammah
 
 def main():
     """run-time code"""
 
     # create two cheater objects
     cheater1 = Saboteur() 
-    cheater2 = Additional_Die()
+    cheater2 = Drop_the_Hammah()
 
     # both players take turns
     cheater1.roll()

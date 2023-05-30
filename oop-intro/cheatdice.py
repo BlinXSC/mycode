@@ -32,3 +32,27 @@ class Cheat_Loaded_Dice(Player): # inheritance of Player
             if self.dice[i] < 6:
                 self.dice[i] += 1
             i += 1
+
+# allows user to take a mulligan
+class Mulligan(Player): #inheritance of Player
+    def cheat(self):
+        if sum(self.get_dice()) <= 9:
+            self.dice = []
+            for i in range(3):
+                self.dice.append(randint(1, 6))
+
+# enables the user to roll one more dice
+class Additional_Die(Player):
+    def cheat(self):
+        self.dice.append(randint(1, 6))
+
+# weight the first dice so it cannot roll less than a three
+class Weighted_Dice(Player):
+    def cheat(self):
+        if self.dice[0] < 3:
+            self.dice[0] = randint(3,6)
+
+# sabotages other player's dice to roll less than a three
+class Saboteur(Player):
+    def cheat(self, other_player):
+        other_player.dice = [randint(1,3) for i in range(3)]

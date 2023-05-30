@@ -7,20 +7,24 @@ Creating a simple dice program utilizing classes."""
 from cheatdice import Player
 from cheatdice import Cheat_Swapper
 from cheatdice import Cheat_Loaded_Dice
+from cheatdice import Mulligan
+from cheatdice import Additional_Die
+from cheatdice import Weighted_Dice
+from cheatdice import Saboteur
 
 def main():
     """run-time code"""
 
     # create two cheater objects
-    cheater1 = Cheat_Swapper() # ability is to change 3rd dice roll to 6
-    cheater2 = Cheat_Loaded_Dice() # increase all rolls by +1 provided they are < 6
+    cheater1 = Saboteur() 
+    cheater2 = Additional_Die()
 
     # both players take turns
     cheater1.roll()
     cheater2.roll()
 
     # both players use their cheat methods
-    cheater1.cheat()
+    cheater1.cheat(cheater2)
     cheater2.cheat()
 
     print(f"Cheater 1 rolled {cheater1.get_dice()}")

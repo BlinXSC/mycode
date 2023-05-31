@@ -6,14 +6,14 @@ import paramiko # allows Python to ssh
 import os # low level operating system commands
 import getpass # we need this to accept passwords
 
-
 def movethemfiles(sftp, location):
+    """iterate across the files within directory"""
+
     ## copy our firstpasswd.py script to bender
     sftp.put("file_to_move.txt", f"{location}/file_to_move.txt") # move file to target location home directory
     
     ## close the connection
     sftp.close() # close the connection
-
 
 def main():
     ## where to connect to
@@ -29,8 +29,6 @@ def main():
     location = input("Where do you wish to place the file? ")
 
     movethemfiles(sftp, location)
-
-    
 
 if __name__ == "__main__":
     main()

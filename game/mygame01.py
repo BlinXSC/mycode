@@ -4,7 +4,7 @@
 
 import monsterfight
 
-def showInstructions():
+def show_instructions():
     """Show the game instructions when called"""
     #print a main menu and the commands
     print('''
@@ -15,18 +15,18 @@ Commands:
     get [item]
     ''')
 
-def showStatus():
+def show_status():
     """determine the current status of the player"""
     # print the player's current location
     print('---------------------------')
-    print('You are in the ' + currentRoom)
+    print('You are in the ' + CURRENT_ROOM)
     # print what the player is carrying
     print('Inventory:', inventory)
     # check if there's an item in the room, if so print it
-    if "item" in rooms[currentRoom]:
-        print('You see a ' + rooms[currentRoom]['item'])
-    if "trapdoor" in rooms[currentRoom]:
-        print(rooms[currentRoom]['trapdoor'])
+    if "item" in rooms[CURRENT_ROOM]:
+        print('You see a ' + rooms[CURRENT_ROOM]['item'])
+    if "trapdoor" in rooms[CURRENT_ROOM]:
+        print(rooms[CURRENT_ROOM]['trapdoor'])
     print("---------------------------")
 
 
@@ -67,82 +67,81 @@ rooms = {
          }
 
 # monster count
-monster = 2
+MONSTER = 2
 
 # start the player in the Hall
-currentRoom = 'Hall'
+CURRENT_ROOM = 'Hall'
 
 # show instructions
-showInstructions()
+show_instructions()
 
 # breaking this while loop means the game is over
 while True:
-    showStatus()
+    show_status()
 
     # the player MUST type something in
     # otherwise input will keep asking
-    move = ''
-    while move == '':  
-        move = input('>>> ')
+    MOVE = ''
+    while MOVE == '':
+        MOVE = input('>>> ')
 
     # normalizing input:
     # .lower() makes it lower case, .split() turns it to a list
-    # therefore, "get golden key" becomes ["get", "golden key"]          
-    move = move.lower().split(" ", 1)
+    # therefore, "get golden key" becomes ["get", "golden key"]
+    MOVE = MOVE.lower().split(" ", 1)
 
     #if they type 'go' first
-    if move[0] == 'go':
+    if MOVE[0] == 'go':
         #check that they are allowed wherever they want to go
-        if move[1] in rooms[currentRoom]:
+        if MOVE[1] in rooms[CURRENT_ROOM]:
             #set the current room to the new room
-            currentRoom = rooms[currentRoom][move[1]]
+            CURRENT_ROOM = rooms[CURRENT_ROOM][MOVE[1]]
         # if they aren't allowed to go that way:
         else:
             print('You can\'t go that way!')
 
     #if they type 'get' first
-    if move[0] == 'get' :
+    if MOVE[0] == 'get' :
         # make two checks:
         # 1. if the current room contains an item
         # 2. if the item in the room matches the item the player wishes to get
-        if "item" in rooms[currentRoom] and move[1] in rooms[currentRoom]['item']:
+        if "item" in rooms[CURRENT_ROOM] and MOVE[1] in rooms[CURRENT_ROOM]['item']:
             #add the item to their inventory
-            inventory.append(move[1])
+            inventory.append(MOVE[1])
             #display a helpful message
-            print(move[1] + ' aquired')
+            print(MOVE[1] + ' aquired')
             #delete the item key:value pair from the room's dictionary
-            del rooms[currentRoom]['item']
+            del rooms[CURRENT_ROOM]['item']
         # if there's no item in the room or the item doesn't match
         else:
             #tell them they can't get it
-            print('Can\'t get ' + move[1] + '!')
+            print('Can\'t get ' + MOVE[1] + '!')
 
     ## If a player enters a room with a monster
-    if 'item' in rooms[currentRoom] and 'monster' in rooms[currentRoom]['item']:
+    if 'item' in rooms[CURRENT_ROOM] and 'monster' in rooms[CURRENT_ROOM]['item']:
         print("Monster encountered.")
-        
         # Start fight
-        x = "" 
-        x = monsterfight.fight(x)
+        X = ''
+        X = monsterfight.fight(X)
         if 'sword' in inventory:
             print("You have a sword, which helps you kill the monster")
-            del rooms[currentRoom]['item']
-            monster -= 1
-        elif x == 'winner':
+            del rooms[CURRENT_ROOM]['item']
+            MONSTER -= 1
+        elif X == 'winner':
             print("Monster killed.")
-            del rooms[currentRoom]['item'] 
-            monster -= 1
-        elif x == 'dead':
+            del rooms[CURRENT_ROOM]['item']
+            MONSTER -= 1
+        elif X == 'dead':
             break
         else:
-            "You have the option to flee, or return to kill the monster."
+            print("You have the option to flee, or return to kill the monster.")
 
     ## Define how a player can win
-    if currentRoom == 'Garden' and 'key' in inventory and 'potion' in inventory:
+    if CURRENT_ROOM == 'Garden' and 'key' in inventory and 'potion' in inventory:
         print('You escaped the house with the ultra rare key and magic potion... YOU WIN!')
         break
 
     ## If all monsters are dead
-    if monster == 0:
+    if MONSTER == 0:
         print('You killed all the monsters. YOU WIN!')
         break

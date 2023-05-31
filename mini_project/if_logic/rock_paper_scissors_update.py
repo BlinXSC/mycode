@@ -56,4 +56,4 @@ def main():
         print("Better luck next time...")
 
 # Calls the main function
-main() # \r\n EOF
+main()

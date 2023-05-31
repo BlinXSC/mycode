@@ -34,5 +34,4 @@ def main():
     ## cycle through our commands and issue them on the far end
     for x in our_commands:
         print(commandissue(x, sshsession).decode('utf-8'))
-
 main()

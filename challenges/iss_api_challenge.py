@@ -17,20 +17,24 @@ def iss_locator():
     # Convent epoch time from the API to human readable time.
     current_time = datetime.fromtimestamp(iss_location['timestamp'])
 
-    # Convert LAT/LON into a geographical location on the globe.
-    coordinates = (
-        iss_location['iss_position']['longitude'],
-        iss_location['iss_position']['latitude']
-        )
+    # Putting LAT/LON into variables
+    lat = iss_location['iss_position']['latitude']
+    log = iss_location['iss_position']['longitude']
+
+    # Convert LAT/LON into a geographical location on the globe
+    coordinates = (lat, log)
     result = rg.search(coordinates, verbose=False)
+    city = result[0]['name']
+    country = result[0]['cc']
+
 
     # Print location of the ISS station
     print(dedent(f"""
         Current Location of the ISS:
         Timestamp: {current_time}
-        Lon: {iss_location['iss_position']['longitude']}
-        Lat: {iss_location['iss_position']['latitude']}
-        City/Country: {result[0]['admin1']}, {result[0]['cc']}\n"""
+        Lat: {lat}
+        Lon: {log}
+        City/Country: {city}, {country}\n"""
         ))
 
 if __name__ == "__main__":

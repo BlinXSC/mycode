@@ -27,7 +27,6 @@ def iss_locator():
     city = result[0]['name']
     country = result[0]['cc']
 
-
     # Print location of the ISS station
     print(dedent(f"""
         Current Location of the ISS:

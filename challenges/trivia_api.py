@@ -26,6 +26,7 @@ def trivia():
 
         # Creates the list of questions
         answers = []
+        answer_dict = {}
 
         # Decodes HTML code in answer
         correct_answer = html.unescape(question['correct_answer'])
@@ -39,9 +40,17 @@ def trivia():
         # Randomizes order of answers in the list
         random.shuffle(answers)
 
+        # Start with the numerical equivalent of 'A' in ASCII
+        i = 65
+
         # Print answers
         for x in answers:
-            print(x)
+            print(f"{chr(i)}. {x}")
+            answer_dict[chr(i)] = x
+            i += 1
+
+        # Prompts the user for input
+        user_answer = input("\nPlease provide the letter of the correct answer: ").upper()
 
         # Updates question counter
         counter += 1

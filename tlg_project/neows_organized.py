@@ -2,7 +2,7 @@
 import requests
 
 ## Define NEOW URL
-NEOURL = "https://api.nasa.gov/neo/rest/v2/feed?"
+NEOURL = "https://api.nasa.gov/neo/rest/v1/feed?"
 
 # this function grabs our credentials
 # it is easily recycled from our previous script
@@ -23,7 +23,7 @@ def main():
     year = input("Provide a starting year >>> ")
     month = input("Provide a starting month >>> ")
     day = input("Provide a starting day >>> ")
-    startdate = "start_date=2023-01-01"
+    startdate = f"start_date={year}-{month}-{day}"
 
     ## the value below is not being used in this
     ## version of the script
@@ -36,7 +36,7 @@ def main():
     neodata = neowrequest.json()
 
     ## display NASAs NEOW data
-    print(neodata)
+    print(neodata['near_earth_objects']['2023-05-13'])
 
 if __name__ == "__main__":
     main()

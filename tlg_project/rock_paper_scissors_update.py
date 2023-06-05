@@ -5,8 +5,8 @@ Rock Paper Scissors game :)
 
 import random
 
-def main():
-    """ The main program"""
+def rock_paper_scissors():
+    """Function that runs the game"""
 
     # Briefs the player on the rock paper scissors game.
     print("Welcome to a game of rock paper scissors. The computer will make a choice,")
@@ -35,19 +35,27 @@ def main():
             print('You did not choose rock, paper, or scissors...')
             user_choice = input('Enter your choice (rock, paper, scissors) >>> ').lower()
 
+        print(f"Player selects {user_choice}, computer selects {computer_choice}")
+
+        victories = {
+            "rock":"scissors",  # Rock beats scissors
+            "paper":"rock",  # Paper beats rock
+            "scissors":"paper"  # Scissors beats paper
+        }
+
         # Compare choices
         if user_choice == computer_choice:
             print("It's a tie!\n")
-        elif (
-                (user_choice == 'rock' and computer_choice == 'scissors') or
-                (user_choice == 'scissors' and computer_choice == 'paper') or
-                (user_choice == 'paper' and computer_choice == 'rock')
-             ):
+        elif computer_choice == victories[user_choice]:
             print("You win this round.\n")
             player_score += 1
         else:
             print("Sorry... computer wins...\n")
             computer_score += 1
+
+        # Print score between player and computer
+        print(f"Player score: {player_score}")
+        print(f"Computer score: {computer_score}\n")
 
     # Provides player the results of this match.
     if player_score > computer_score:
@@ -55,5 +63,13 @@ def main():
     else:
         print("Better luck next time...")
 
-# Calls the main function
-main()
+    # Insults the player if they did not win one round in the entire match.abs
+    print("Perhaps you should call it a day... your luck isn't so good at the moment.")
+
+def main():
+    """Main program"""
+    rock_paper_scissors()
+
+# Calls main function
+if __name__ == "__main__":
+    main()

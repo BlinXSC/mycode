@@ -2,16 +2,27 @@
 """
 Rock Paper Scissors game :)
 """
-
+from textwrap import dedent
 import random
 
 def rock_paper_scissors():
     """Function that runs the game"""
 
     # Briefs the player on the rock paper scissors game.
-    print("Welcome to a game of rock paper scissors. The computer will make a choice,")
-    print("then the player will enter their choice. Rock beats scissors, scissors beats paper,")
-    print("and paper beats rock. The game ends when the player or computer score three points. \n")
+    print(dedent("""\
+    Welcome to a game of Rock, Paper, Scissors... Lizard, Spock. This is a modified
+    version of Rock Paper Scissors as played on the TV Show "The Big Bang Theory".
+    The computer and player will enter their choice. Here are the rules that decide 
+    the winner:
+
+        - Rock crushes lizard and scissors
+        - Paper covers rock, and disproves Spock
+        - Scissors cuts paper, and decapitates lizard
+        - Spock smashes scissors, and vaporizes rock
+        - Lizard eats paper, and poisons Spock
+    
+    The game ends when the player or computer score three points.
+        """))
 
     # Initializes the score
     player_score = 0
@@ -21,32 +32,35 @@ def rock_paper_scissors():
     while (player_score < 3 and computer_score < 3):
 
         # Computer has three options to pick from
-        options = ['rock', 'paper', 'scissors']
+        options = ['rock', 'paper', 'scissors', 'lizard', 'spock']
 
         # Computer's choice
         computer_choice = random.choice(options)
         # print(computer_choice) #For debug purposes, keep this line inactive
 
         # User picks
-        user_choice = input('Enter your choice (rock, paper, scissors) >>> ').lower()
+        user_choice = input('Enter your choice (rock, paper, scissors, lizard, Spock) >>> ').lower()
 
         # Ensures user choices the appropriate option
         while user_choice not in options:
-            print('You did not choose rock, paper, or scissors...')
-            user_choice = input('Enter your choice (rock, paper, scissors) >>> ').lower()
+            print('You did not choose rock, paper, or scissors...\n')
+            user_choice = input('Re-enter choice (rock, paper, scissors, lizard, Spock) >>> ').lower()
 
         print(f"Player selects {user_choice}, computer selects {computer_choice}")
 
+        # See introduction for rules.
         victories = {
-            "rock":"scissors",  # Rock beats scissors
-            "paper":"rock",  # Paper beats rock
-            "scissors":"paper"  # Scissors beats paper
+            "rock":["scissors", "lizard"],
+            "paper":["rock", "spock"],
+            "scissors":["paper", "lizard"],
+            "lizard":["paper, spock"],
+            "spock":["rock", "scissors"]
         }
 
         # Compare choices
         if user_choice == computer_choice:
             print("It's a tie!\n")
-        elif computer_choice == victories[user_choice]:
+        elif computer_choice in victories[user_choice]:
             print("You win this round.\n")
             player_score += 1
         else:
@@ -63,8 +77,9 @@ def rock_paper_scissors():
     else:
         print("Better luck next time...")
 
-    # Insults the player if they did not win one round in the entire match.abs
-    print("Perhaps you should call it a day... your luck isn't so good at the moment.")
+    # Insults the player if they did not win one round in the entire match.
+    if player_score == 0:
+        print("Perhaps you should call it a day... your luck isn't so good at the moment.")
 
 def main():
     """Main program"""

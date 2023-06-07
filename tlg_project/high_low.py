@@ -17,7 +17,8 @@ def hi_low_game():
     player_guess = ''
     corr_guess = ''
 
-    print(dedent("""\
+    print(dedent("""
+        =====================================INSTRUCTIONS============================================
         Welcome to a game of HiLo. This game is played with a 52 card deck. You will be asked
         to provide an initial bankroll. Afterwards, you will be asked to place a bet between
         $0.01 and $100.00. You will be shown one card, and your task is to guess if the next card 
@@ -135,6 +136,8 @@ def hi_low_game():
         print(f"Final Bankroll: ${final_bankroll}")
     else:
         print("Best you stay out of Vegas...")
+
+    print("\nReturning to Game Box...")
 
 def main():
     """ Main runtime function """

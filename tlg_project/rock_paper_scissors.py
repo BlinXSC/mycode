@@ -5,11 +5,12 @@ Rock Paper Scissors game :)
 from textwrap import dedent
 import random
 
-def rock_paper_scissors():
+def rock_paper_scissors_game():
     """Function that runs the game"""
 
     # Briefs the player on the rock paper scissors game.
-    print(dedent("""\
+    print(dedent("""
+    ===============================INSTRUCTIONS======================================
     Welcome to a game of Rock, Paper, Scissors... Lizard, Spock. This is a modified
     version of Rock Paper Scissors as played on the TV Show "The Big Bang Theory".
     The computer and player will enter their choice. Here are the rules that decide 
@@ -80,6 +81,8 @@ def rock_paper_scissors():
     # Insults the player if they did not win one round in the entire match.
     if player_score == 0:
         print("Perhaps you should call it a day... your luck isn't so good at the moment.")
+
+    print("\nReturning to Game Box...")
 
 def main():
     """Main program"""

@@ -67,7 +67,7 @@ def trivia_modifier(url):
 
     return url
 
-def trivia():
+def trivia_game():
     "Executes the trivia program"
 
     print(dedent("""
@@ -159,6 +159,8 @@ def trivia():
         print("\nPerhaps you need to study up a bit.")
     else:
         print("\nYou couldn't even get one right, Private Pyle?")
+
+    print("Returning to Game Box...")
 
 def main():
     trivia()

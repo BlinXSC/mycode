@@ -24,7 +24,7 @@ def main():
 
         while selection not in [0, 1, 2, 3]:
             try:
-                selection = int(input(dedent("""
+                selection = int(input(dedent("""\
                     Please select from the following games:
 
                     1. High Low (Guess if the next card drawn will be higher or lower)
